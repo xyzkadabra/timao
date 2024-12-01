@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 
 interface Question {
   title: string;
@@ -77,68 +78,64 @@ const questionsData: Question[] = [
 
 const AccordionItem: React.FC<{
   question: Question;
-  index: number;
-  activeIndex: number;
-  setActiveIndex: (index: number) => void;
-}> = ({ question, index, activeIndex, setActiveIndex }) => {
-  const isActive = index === activeIndex;
+}> = ({ question}) => {
+  const [open, setOpen] = useState<boolean>(false);
+
 
   return (
     <div
-      data-v-facba76d
-      data-v-e1b4b32e
-      className={"accordion questions__acordion " + (isActive ? "active" : "")}
+      className="accordion questions__acordion"
+      data-v-facba76d=""
+      data-v-e1b4b32e=""
+      data-state={open ? "open" : "closed"}
+      onClick={() => setOpen(!open)}
     >
-      <div
-        data-v-facba76d
-        className="accordion__header"
-        onClick={() => setActiveIndex(isActive ? -1 : index)}
+      <div className="accordion__header" data-v-facba76d="" 
       >
-        <div data-v-e1b4b32e className="questions__acordion__topo">
-          <p data-v-e1b4b32e>{question.title}</p>
+        <div className="questions__acordion__topo" data-v-e1b4b32e="">
+          <p data-v-e1b4b32e="">{question.title}</p>
           <svg
-            data-v-e1b4b32e
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
             viewBox="0 0 24 24"
+            data-v-e1b4b32e=""
+            fill="#fff"
           >
-            <path fill="#fff" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"></path>
+            <path d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"></path>
           </svg>
         </div>
       </div>
-      {isActive && (
-        <div data-v-facba76d className="accordion__content">
-          <div data-v-facba76d className="accordion__content-wrapper">
-            <div data-v-facba76d className="accordion__content-margin-box">
-              <div data-v-e1b4b32e className="questions__acordion__content">
-                <p data-v-e1b4b32e>{question.content}</p>
-              </div>
+      <div
+        className="accordion__content"
+        data-v-facba76d=""
+        style={{
+          gridTemplateRows:  !open ? "0" : "1fr",
+        }}
+      >
+        <div className="accordion__content-wrapper" data-v-facba76d="">
+          <div className="accordion__content-margin-box" data-v-facba76d="">
+            <div className="questions__acordion__content" data-v-e1b4b32e="">
+              <p data-v-e1b4b32e="">{question.content}</p>
             </div>
           </div>
         </div>
-      )}
-
-     
+      </div>
     </div>
   );
 };
 
 const FrequentQuestions: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState<number>(-1);
 
   return (
-    <div data-v-e1b4b32e className="questions__wrappe row">
-      <h2 data-v-e1b4b32e className="questions__title">
+    <div className="questions__wrappe row" data-v-e1b4b32e="">
+      <h2 className="questions__title" data-v-e1b4b32e="">
         Perguntas frequentes
       </h2>
       {questionsData.map((question, index) => (
         <AccordionItem
           key={index}
           question={question}
-          index={index}
-          activeIndex={activeIndex}
-          setActiveIndex={setActiveIndex}
         />
       ))}
     </div>

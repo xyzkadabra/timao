@@ -1,6 +1,6 @@
 // components/FAQSection.tsx
 "use client";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PartnerCompanies from './PartnerCompanies';
 import FrequentQuestions from './FrequentQuestions';
 
