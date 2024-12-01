@@ -1,101 +1,92 @@
 import Image from "next/image";
+import { Header } from "./components/Header";
+import { CampaignSection } from "./components/CampaignSection";
+import { MotivationsSection } from "./components/MotivationsSection ";
+import { HeroSection } from "./components/LayoutHero";
+import { ContributionSection } from "./components/ContributionSection";
+import GoalRaisedSection from "./components/GoalRaisedSection";
+import ContributorsSlider from "./components/ContributorsSlider";
+import { AboutArena } from "./components/AboutArena";
+import { TimelineSection } from "./components/TimelineSection";
+import { Ambassadors } from "./components/Ambassadors";
+import { Committee } from "./components/Committee";
+import FAQSection from "./components/FAQSection";
+import Footer from "./components/Footer";
 
+const contributors = [
+  { name: "Ana Beatriz Souza", city: "São Paulo", state: "SP" },
+  { name: "Carlos Eduardo Silva", city: "Rio de Janeiro", state: "RJ" },
+  { name: "Juliana Martins", city: "Belo Horizonte", state: "MG" },
+  { name: "Fernando de Oliveira", city: "Porto Alegre", state: "RS" },
+  { name: "Marcos Antônio Pereira", city: "Salvador", state: "BA" },
+  { name: "Luciana Freitas Almeida", city: "Recife", state: "PE" },
+  { name: "Roberto Carlos Lima", city: "Fortaleza", state: "CE" },
+  { name: "Mariana Costa Neves", city: "Manaus", state: "AM" },
+  { name: "Tiago Ramos Nogueira", city: "Curitiba", state: "PR" },
+  { name: "Patrícia Rocha Fonseca", city: "Natal", state: "RN" },
+  { name: "Luiz Fernando Barros", city: "Vitória", state: "ES" },
+  { name: "Sandra Regina Goulart", city: "Goiânia", state: "GO" },
+  { name: "Rodrigo Santana", city: "Campo Grande", state: "MS" },
+  { name: "Simone Azevedo Souza", city: "São Luís", state: "MA" },
+  { name: "Alexandre Duarte Costa", city: "Cuiabá", state: "MT" },
+  { name: "Ricardo Tavares", city: "Maceió", state: "AL" },
+  { name: "Cláudia Miranda", city: "Aracaju", state: "SE" },
+  { name: "Danilo Nonato", city: "Palmas", state: "TO" },
+  { name: "Eva Nonato", city: "Belém", state: "PA" },
+  { name: "Renata Carvalho", city: "João Pessoa", state: "PB" },
+  { name: "Isabela Montenegro", city: "Teresina", state: "PI" },
+  { name: "Heitor Lourenço", city: "Macapá", state: "AP" },
+  { name: "Lucio Fonseca", city: "Boa Vista", state: "RR" },
+  { name: "Vanessa Lins", city: "Porto Velho", state: "RO" },
+  { name: "Samuel Figueredo", city: "Uberaba", state: "MG" },
+  { name: "Caroline Dias", city: "Florianópolis", state: "SC" },
+  { name: "Gisele Barros", city: "Caxias do Sul", state: "RS" },
+  { name: "Anderson Júlio", city: "Blumenau", state: "SC" },
+  { name: "Rafaela Silveira", city: "Campinas", state: "SP" },
+  { name: "Felipe Rocha", city: "Pelotas", state: "RS" },
+  { name: "Bianca Castro", city: "Londrina", state: "PR" },
+  { name: "César Augusto", city: "Bauru", state: "SP" },
+  { name: "Diana Lorena", city: "Pelotas", state: "RS" },
+  { name: "Eduardo Rezende", city: "Joinville", state: "SC" },
+  { name: "Fábio Lopes", city: "Juiz de Fora", state: "MG" },
+  { name: "Graziela Souza", city: "Santos", state: "SP" },
+  { name: "Henrique Nunes", city: "Nova Iguaçu", state: "RJ" },
+  { name: "Igor Fernando", city: "Campo Grande", state: "MS" },
+  { name: "Joana Amaral", city: "Osasco", state: "SP" },
+  { name: "Kleber Machado", city: "Contagem", state: "MG" },
+  { name: "Leandro Costa", city: "Serra", state: "ES" },
+  { name: "Mauro César", city: "Vila Velha", state: "ES" },
+  { name: "Nívea Stelmann", city: "Cariacica", state: "ES" },
+  { name: "Olívia Pereira", city: "São Gonçalo", state: "RJ" },
+  { name: "Paula de Andrade", city: "Duque de Caxias", state: "RJ" },
+  { name: "Quirino Ribeiro", city: "Niterói", state: "RJ" },
+  { name: "Rosa Maria", city: "São João de Meriti", state: "RJ" },
+  { name: "Silvia Pinheiro", city: "Belford Roxo", state: "RJ" },
+  { name: "Túlio Maravilha", city: "São José dos Campos", state: "SP" },
+  { name: "Ubiratan Dantas", city: "São Vicente", state: "SP" },
+  { name: "Viviane Araújo", city: "Mogi das Cruzes", state: "SP" },
+];
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    <main data-v-5dcda68c className="main">
+      <Header />
+      <HeroSection />
+      <CampaignSection />
+      <MotivationsSection />
+      <ContributionSection />
+      <GoalRaisedSection
+        amountRaised="R$ 19.630.728,19"
+        lastUpdate="30/11/2024 às 17:40"
+        nextUpdate="30/11/2024 às 17:50"
+        goalAmount="R$ 700.000.000,00"
+      />
+      <ContributorsSlider contributors={contributors} />
+      <AboutArena />
+      <TimelineSection />
+      <Ambassadors />
+      <Committee />
+      <FAQSection />
+      <Footer />
+    </main>
   );
 }
