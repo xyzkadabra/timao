@@ -68,7 +68,7 @@ const contributors = [
 ];
 export default function Home() {
   return (
-    <main data-v-5dcda68c className="main">
+    <main data-v-5dcda68c className="main overflow-hidden">
       <Header />
       <HeroSection />
       <CampaignSection />
