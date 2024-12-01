@@ -6,7 +6,6 @@ import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-type TimelineSectionProps = {};
 
 const events = [
   {
@@ -47,7 +46,7 @@ const events = [
   },
 ];
 
-export const TimelineSection: React.FC<TimelineSectionProps> = () => {
+export const TimelineSection: React.FC<any> = () => {
   return (
     <section
       data-v-7e756120=""
