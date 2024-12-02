@@ -1,26 +1,45 @@
-import React, { useState, useEffect } from 'react';
+"use client";
+import { useContributionContext } from "@/app/context/ContributionContext";
+import React, { useState, useEffect } from "react";
+
+const formatPrice = (price: number) => {
+  return price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+};
 
 const DonationSummary: React.FC = () => {
+  const { selectedAmount } = useContributionContext();
   const [donationDetails, setDonationDetails] = useState({
-    name: '******',
-    imageUrl: 'https://www.doearenacorinthians.com.br/upload/produto/imagem/m_doe-arena-corinthians-1.png',
-    price: 'R$ 10,00',
+    name: "******",
+    imageUrl:
+      "https://www.doearenacorinthians.com.br/upload/produto/imagem/m_doe-arena-corinthians-1.png",
+    price: formatPrice(selectedAmount!),
     quantity: 1,
-    total: 'R$ 10,00',
+    total: formatPrice(selectedAmount! * 1),
   });
 
   useEffect(() => {
-    const storedName = localStorage.getItem('donationName');
-    const storedImageUrl = localStorage.getItem('donationImageUrl');
-    const storedPrice = localStorage.getItem('donationPrice');
-    const storedQuantity = localStorage.getItem('donationQuantity');
-    const storedTotal = localStorage.getItem('donationTotal');
+    const storedName = localStorage.getItem("donationName");
+    const storedImageUrl = localStorage.getItem("donationImageUrl");
+    const storedPrice = localStorage.getItem("donationPrice");
+    const storedQuantity = localStorage.getItem("donationQuantity");
+    const storedTotal = localStorage.getItem("donationTotal");
 
-    if (storedName) setDonationDetails(prevState => ({ ...prevState, name: storedName }));
-    if (storedImageUrl) setDonationDetails(prevState => ({ ...prevState, imageUrl: storedImageUrl }));
-    if (storedPrice) setDonationDetails(prevState => ({ ...prevState, price: storedPrice }));
-    if (storedQuantity) setDonationDetails(prevState => ({ ...prevState, quantity: parseInt(storedQuantity) }));
-    if (storedTotal) setDonationDetails(prevState => ({ ...prevState, total: storedTotal }));
+    if (storedName)
+      setDonationDetails((prevState) => ({ ...prevState, name: storedName }));
+    if (storedImageUrl)
+      setDonationDetails((prevState) => ({
+        ...prevState,
+        imageUrl: storedImageUrl,
+      }));
+    if (storedPrice)
+      setDonationDetails((prevState) => ({ ...prevState, price: storedPrice }));
+    if (storedQuantity)
+      setDonationDetails((prevState) => ({
+        ...prevState,
+        quantity: parseInt(storedQuantity),
+      }));
+    if (storedTotal)
+      setDonationDetails((prevState) => ({ ...prevState, total: storedTotal }));
   }, []);
 
   return (
@@ -35,7 +54,9 @@ const DonationSummary: React.FC = () => {
             <div className="small-12 columns produtoResumo-left flex-container align-middle visible">
               <div className="produtoResumo-imagem visible">
                 <img
-                  src={"https://www.doearenacorinthians.com.br/upload/produto/imagem/m_doe-arena-corinthians-1.png"}
+                  src={
+                    "https://www.doearenacorinthians.com.br/upload/produto/imagem/m_doe-arena-corinthians-1.png"
+                  }
                   alt={donationDetails.name}
                   title={donationDetails.name}
                   width="100"
@@ -44,15 +65,21 @@ const DonationSummary: React.FC = () => {
               </div>
 
               <div className="produtoResumo-nome">
-                <p className="produtoResumo-nome-text">{donationDetails.name}</p>
+                <p className="produtoResumo-nome-text">
+                  {donationDetails.name}
+                </p>
                 <div className="produtoResumo-precos">
-                  <span className="produtoResumo-precos-preco">{donationDetails.price}</span>
+                  <span className="produtoResumo-precos-preco">
+                    {donationDetails.price}
+                  </span>
                 </div>
                 <div className="produtoResumo-boxFlex">
                   <span>
                     <span>Quantidade:</span> {donationDetails.quantity}
                   </span>
-                  <span><b>{donationDetails.price}</b></span>
+                  <span>
+                    <b>{donationDetails.price}</b>
+                  </span>
                 </div>
               </div>
             </div>
