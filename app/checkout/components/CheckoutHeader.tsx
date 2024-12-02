@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import React from "react";
 
 const CheckoutHeader: React.FC = () => {
@@ -10,13 +9,13 @@ const CheckoutHeader: React.FC = () => {
         <div className="small-12 columns">
           <div className="medium-flex-container align-justify align-middle">
             <div className="box-logo-topo">
-              <Link href="/">
+              <a href="/">
                 <img
                   src="https://www.doearenacorinthians.com.br/bin/tema/doe-arena-corinthians-front-checkout/img/cabecalho/logo.svg"
                   alt="Logo"
                   width="150px"
                 />
-              </Link>
+              </a>
             </div>
             <div className="dividas-na-compra">
               <span>

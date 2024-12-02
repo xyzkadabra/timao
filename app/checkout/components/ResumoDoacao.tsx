@@ -12,7 +12,7 @@ const ResumoDoacao: React.FC = () => {
         });
       };
   return (
-    <div className="box-resumo-pedido mainBox-resumo">
+    <div className="max-h-[250px] box-resumo-pedido mainBox-resumo">
       <div className="mainBox-resumo-t1">
         <h3>Resumo da doação</h3>
       </div>

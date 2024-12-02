@@ -123,7 +123,6 @@ const Footer: React.FC = () => {
         </div>
         <div className="text-center">
           <a
-            href="https://uappi.com.br/"
             target="_blank"
             className="logo-wap"
             rel="noopener noreferrer"

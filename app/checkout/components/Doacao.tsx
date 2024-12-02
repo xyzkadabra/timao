@@ -2,7 +2,7 @@ import React from 'react';
 
 const Doacao: React.FC = () => {
   return (
-    <div className="mainBox pagamento boxInativo">
+    <div className="max-w-[400px] max-h-[200px] w-full mainBox pagamento boxInativo">
       <div className="t1 identificacao-t1">
         <h3>2. Doação</h3>
       </div>

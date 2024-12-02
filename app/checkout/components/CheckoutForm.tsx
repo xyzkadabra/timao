@@ -41,6 +41,12 @@ const CheckoutForm: React.FC<{ handleGoToDonation: () => void }> = ({ handleGoTo
         // Salvar as informações no localStorage
         localStorage.setItem('nomeRazao', formData.nomeRazao);
         localStorage.setItem('cpfCnpj', formData.cpfCnpj);
+        localStorage.setItem('email', formData.email);
+        localStorage.setItem('celular', formData.celular);
+        localStorage.setItem('telefone', formData.telefone);
+        localStorage.setItem('nascimento', formData.nascimento);
+        localStorage.setItem('sexo', formData.sexo);
+        localStorage.setItem('senha', formData.senha);
       
     
     // Call the handleGoToDonation function
@@ -114,10 +120,10 @@ const CheckoutForm: React.FC<{ handleGoToDonation: () => void }> = ({ handleGoTo
                     onChange={handleChange}
                     className="validate[required,funcCall[checkNome],custom[validarCaracteresEspeciais]]"
                     data-label="Nome completo *"
+                    placeholder='Nome completo'
                     required
                   />
                 </div>
-                <div className="mainBox-conteudo-form-input-label labelCadastro">Nome completo *</div>
               </div>
             </div>
 
@@ -127,16 +133,16 @@ const CheckoutForm: React.FC<{ handleGoToDonation: () => void }> = ({ handleGoTo
                 <div className="mainBox-conteudo-form-input-validacao">
                   <input
                     id="data-nascimento-cadastro"
-                    type="tel"
+                    type="date"
                     name="nascimento"
                     value={formData.nascimento}
                     onChange={handleChange}
                     className="validate[ custom[birthdayValid]] maskCheckoutData"
                     data-label="Data de nascimento"
                     maxLength={10}
+                    placeholder='Data de nascimento'
                   />
                 </div>
-                <div className="mainBox-conteudo-form-input-label labelCadastro">Data de nascimento</div>
               </div>
               <small className="acessoMenores">
                 Menores de 18 anos não estão autorizados a efetuar o cadastro em nosso site. Em caso de dúvidas entre em contato conosco através do número: .

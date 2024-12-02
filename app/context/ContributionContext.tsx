@@ -25,7 +25,7 @@ export const useContributionContext = () => {
 
 // Provedor do contexto
 export const ContributionProvider = ({ children }: { children: React.ReactNode }) => {
-  const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
+  const [selectedAmount, setSelectedAmount] = useState<number | null>(10);
   const [isDisabled, setIsDisabled] = useState(true);
   const [isLoading, setIsLoading] = useState(false); // Inicializando o estado de loading
 

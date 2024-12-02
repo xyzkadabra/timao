@@ -33,16 +33,20 @@ export default function RootLayout({
           crossOrigin=""
           src="https://www.doearenacorinthians.com.br/tema/doe-arena-corinthians-front/dist/assets/index-Chl56uTM.js"
         ></script>
-    
-        <link 
+
+        <link
           rel="stylesheet"
           crossOrigin=""
           href="https://www.doearenacorinthians.com.br/checkout/tema/checkout/handler/checkout-acesso.css?v=1733046159"
         />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://www.doearenacorinthians.com.br/checkout/tema/checkout/handler/checkout-confirmacao.css?v=1733109470"
+          media="screen"
+        />
       </head>
-      <body className={`antialiased`}>
-       {children}
-      </body>
+      <body className={`antialiased`}>{children}</body>
     </html>
   );
 }
