@@ -66,6 +66,21 @@ const contributors = [
   { name: "Ubiratan Dantas", city: "São Vicente", state: "SP" },
   { name: "Viviane Araújo", city: "Mogi das Cruzes", state: "SP" },
 ];
+
+const formatCurrency = (value: number): string => {
+  const formattedValue = (value / 100).toFixed(2); // Divide por 100 para ajustar as casas decimais
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(Number(formattedValue));
+};
+
+// Exemplo de uso:
+const valorArrecadado = Number(process.env.NEXT_PUBLIC_VALOR_ARRECADADO);
+const valorFormatado = formatCurrency(valorArrecadado);
+
+console.log(valorFormatado); // Saída: R$ 25.085.221,72
+
 export default function Home() {
   return (
     <main data-v-5dcda68c className="main overflow-hidden">
@@ -75,10 +90,7 @@ export default function Home() {
       <MotivationsSection />
       <ContributionSection />
       <GoalRaisedSection
-        amountRaised="R$ 19.630.728,19"
-        lastUpdate="30/11/2024 às 17:40"
-        nextUpdate="30/11/2024 às 17:50"
-        goalAmount="R$ 700.000.000,00"
+        amountRaised={valorFormatado}
       />
       <ContributorsSlider contributors={contributors} />
       <AboutArena />

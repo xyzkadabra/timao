@@ -2,9 +2,8 @@
 import React from "react";
 import { useContributionContext } from "../context/ContributionContext";
 import { Loader } from "./Loader";
-import { useRouter } from "next/navigation";
 
-const contributions = [10, 20, 50, 100];
+const contributions = [10, 20, 50, 100, 500];
 
 export const ContributionSection: React.FC = () => {
   const {
@@ -15,7 +14,14 @@ export const ContributionSection: React.FC = () => {
     isLoading,
     setIsLoading,
   } = useContributionContext();
-  const router = useRouter(); // Usamos o useRouter para redirecionamento
+
+  const checkoutLinks = {
+    10: process.env.NEXT_PUBLIC_LINK_DOACAO_1 || "",
+    20: process.env.NEXT_PUBLIC_LINK_DOACAO_2 || "",
+    50: process.env.NEXT_PUBLIC_LINK_DOACAO_3 || "",
+    100: process.env.NEXT_PUBLIC_LINK_DOACAO_4 || "",
+    500: process.env.NEXT_PUBLIC_LINK_DOACAO_5 || "",
+  } as const;
 
   const handleSelectAmount = (amount: number) => {
     setSelectedAmount(amount);
@@ -24,23 +30,23 @@ export const ContributionSection: React.FC = () => {
 
   const handleContribute = () => {
     if (isDisabled) {
-      // Caso o botão esteja desabilitado, redireciona para a seção "contribua"
       const section = document.getElementById("contribua");
       if (section) {
-        section.scrollIntoView({ behavior: "smooth" }); // Rolagem suave para a seção
+        section.scrollIntoView({ behavior: "smooth" });
       }
     } else if (selectedAmount) {
-      // Se não estiver desabilitado, e se houver um valor selecionado, ativa o loading e redireciona para o checkout
-      setIsLoading(true); // Ativa o loading
-      setTimeout(() => {
-        // Redireciona para a página de checkout
-        router.push("/checkout/acesso");
-        setIsLoading(false); // Ativa o loading
-      }, 1000); // Delay de 1 segundo para simular o carregamento
+      const checkoutLink = checkoutLinks[selectedAmount as keyof typeof checkoutLinks];
+      if (checkoutLink) {
+        setIsLoading(true);
+        setTimeout(() => {
+          window.location.href = checkoutLink;
+          setIsLoading(false);
+        }, 1000);
+      } else {
+        console.error("Nenhum link de checkout encontrado para o valor selecionado.");
+      }
     }
-
   };
-  
 
   return (
     <section
