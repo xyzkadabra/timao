@@ -13,24 +13,33 @@ export function Header() {
       currency: "BRL",
     });
   };
+
+  const checkoutLinks = {
+    10: process.env.NEXT_PUBLIC_LINK_DOACAO_1 || "",
+    20: process.env.NEXT_PUBLIC_LINK_DOACAO_2 || "",
+    50: process.env.NEXT_PUBLIC_LINK_DOACAO_3 || "",
+    100: process.env.NEXT_PUBLIC_LINK_DOACAO_4 || "",
+    500: process.env.NEXT_PUBLIC_LINK_DOACAO_5 || "",
+  } as const;
+
+  
   const handleContribute = () => {
     if (isDisabled) {
-      // Caso o botão esteja desabilitado, redireciona para a seção "contribua"
       const section = document.getElementById("contribua");
       if (section) {
-        section.scrollIntoView({ behavior: "smooth" }); // Rolagem suave para a seção
+        section.scrollIntoView({ behavior: "smooth" });
       }
     } else if (selectedAmount) {
-      // Se não estiver desabilitado, e se houver um valor selecionado, ativa o loading e redireciona para o checkout
-      setIsLoading(true); // Ativa o loading
-      setTimeout(() => {
-        
-        // Redireciona para a página de checkout
-        router.push("/checkout/acesso");
-        setIsLoading(false);
-
-      }, 1000); // Delay de 1 segundo para simular o carregamento
-
+      const checkoutLink = checkoutLinks[selectedAmount as keyof typeof checkoutLinks];
+      if (checkoutLink) {
+        setIsLoading(true);
+        setTimeout(() => {
+          window.location.href = checkoutLink;
+          setIsLoading(false);
+        }, 1000);
+      } else {
+        console.error("Nenhum link de checkout encontrado para o valor selecionado.");
+      }
     }
   };
  
