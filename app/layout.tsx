@@ -21,8 +21,9 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="facebook-domain-verification"
-          content="bla3dlb9fc3f31p8i4napjas0gjdqp"
+          content="avctfir6uvjiiywuvtxdkp5kbzybex"
         />
+
 
         {/* Título da página */}
         <title>Doe Arena Corinthians</title>
