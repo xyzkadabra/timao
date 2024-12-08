@@ -21,7 +21,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="facebook-domain-verification"
-          content="avctfir6uvjiiywuvtxdkp5kbzybex"
+          content="6tpgoogcxdah2vv1yue0akh9ufo5px"
         />
 
 
